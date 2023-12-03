@@ -37,8 +37,8 @@ export default function Task ({task, index, deleteTask, updateTask })  {
 
 
   return (
-    <li style={{ textDecoration: completed ? 'line-through' : 'none' }}>
-      <div>
+    
+      <div style={{ textDecoration: completed ? 'line-through' : 'none' }}>
         {/* Checkbox para marcar/desmarcar la tarea como completada */}
         <input
           type="checkbox"
@@ -73,7 +73,7 @@ export default function Task ({task, index, deleteTask, updateTask })  {
         <button onClick={() => deleteTask(index)}>Eliminar</button> {/* Elimina la tarea */}
         {editing && <button onClick={handleCancelClick}>Cancelar</button>} {/* Muestra el botón de cancelar solo en modo de edición */}
       </div>
-    </li>
+    
   );
 }
 

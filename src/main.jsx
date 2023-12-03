@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Header from './components/Header'
 import TaskList from './components/TaskList';
 import { BotonA, BotonB } from './components/Buttons';
-import Text from './components/Text';
+import TitleApp from './components/title/TitleApp';
+import Header from './components/header/Header';
 
 
 /*
@@ -16,7 +16,8 @@ const tasks = [
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Header/>
+    <TitleApp/>
     <TaskList/>
-    <BotonB/> 
+    
   </React.StrictMode>,
 )
