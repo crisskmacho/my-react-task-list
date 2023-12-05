@@ -14,12 +14,33 @@ export default function TaskList ({ }) {
   const [description, setDescription] = useState('');
 
 
-  // Función para agregar una nueva tarea a la lista de tareas
-  const addTask = () => {
-      // Crea una nueva tarea con el título, descripción y estado predeterminado
-      createTask(title, description); //función createTask del hook
-      setTitle(''); // Limpia el estado del título
-      setDescription(''); // Limpia el estado de la descripción
+  // Maneja el cambio en el input del título de la tarea
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value); 
+  }
+
+  // Maneja el cambio en el input de la descripción de la tarea
+  const handleDrescriptionChange = (e) => {
+    setDescription(e.target.value);
+  };
+
+  // Maneja el envío del formulario para agregar una nueva tarea
+  const handleFormSubmit = (e) => {
+    e.preventDefault(); // Evita el comportamiento por defecto del formulario
+  
+    if (title.length >= 3) {
+      // Verifica si el título tiene al menos 3 caracteres
+      if (description.trim() !== '') {
+        // Verifica si la descripción no está vacía (quitando espacios en blanco)
+        createTask(title, description); // Crea la tarea con el título y la descripción
+        setTitle(''); // Limpia el input del título
+        setDescription(''); // Limpia el input de la descripción
+      } else {
+        alert('La descripción no puede estar vacía.'); // Muestra una alerta si la descripción está vacía
+      }
+    } else {
+      alert('El nombre de la tarea debe tener al menos 3 caracteres.'); // Muestra una alerta si el título es demasiado corto
+    }
   };
 
   // Función para eliminar una tarea según su índice
@@ -39,35 +60,35 @@ export default function TaskList ({ }) {
       </div>{/* Muestra el número total de tareas */}
 
       {/* Campos de entrada para el título y la descripción de la nueva tarea */}
-      <input className='TituloTarea'
-        type="text"
-        placeholder="Título de la tarea"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input className='DescTarea'
-        type="text"
-        placeholder="Descripción de la tarea"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-
-      <button className='addtask' onClick={addTask}>Agregar Tarea</button>
+      <form onSubmit={handleFormSubmit}>
+        <input
+          className='TituloTarea'
+          type="text"
+          placeholder="Título de la tarea"
+          value={title}
+          onChange={handleTitleChange}
+        />
+        <input
+          className='DescTarea'
+          type="text"
+          placeholder="Descripción de la tarea (opcional)"
+          value={description}
+          onChange={handleDrescriptionChange}
+        />
+        <button className='addtask' type="submit">Agregar Tarea</button>
+      </form>
 
       <ul className='mapTask'>
         {tasks.map((task, index) => (
-          // Renderiza el componente Task para cada tarea en la lista
           <Task
             key={index}
             task={task}
             index={index}
-            deleteTask={handleDeleteTask} // Proporciona la función de eliminación de tarea
-            updateTask={handleUpdateTask} // Proporciona la función de actualización de tarea
+            deleteTask={handleDeleteTask}
+            updateTask={handleUpdateTask}
           />
         ))}
       </ul>
-
-      
     </div>
   );
 }

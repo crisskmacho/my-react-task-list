@@ -2,11 +2,13 @@ import { useState } from "react"
 
 
 export const useTaskManager = () => {
-    const [ tasks, setTasks] = useState([]);
+    const [ tasks, setTasks] = useState([]); //Array de tareas vacio
 
     const createTask = (title, description) => {
         if(title && description){
-            setTasks([...tasks, {title, description, state: false}]);
+            const newArray = [...tasks]
+            newArray.unshift({title, description, state: false})
+            setTasks([...newArray]);
         }
     };
 
