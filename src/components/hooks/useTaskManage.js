@@ -6,9 +6,7 @@ export const useTaskManager = () => {
 
     const createTask = (title, description) => {
         if(title && description){
-            const newArray = [...tasks]
-            newArray.unshift({title, description, state: false})
-            setTasks([...newArray]);
+            setTasks([ {title, description, state: false}, ...tasks]);
         }
     };
 

@@ -14,10 +14,13 @@ export default function Task ({task, index, deleteTask, updateTask })  {
   // Maneja el evento de actualización o edición de la tarea
   const handleUpdateClick = () => {
     if(editing) {
-      updateTask(index, {title: editedTitle, description: editedDescription, state});
+      updateTask(index, { title: editedTitle, description: editedDescription, state: completed });
       setEditing(false); // Finaliza el modo de edición
-    }else{
-      setEditing(true); // Si no está editando, activa el modo de edición
+    } else {
+      setEditedTitle(title); // Establece el título de la tarea en los estados de edición
+      setEditedDescription(description); // Establece la descripción de la tarea en los estados de edición
+      setCompleted(state); // Establece el estado completado de la tarea en el estado de edición
+      setEditing(true); // Activa el modo de edición
     }
   };
 
@@ -62,8 +65,8 @@ export default function Task ({task, index, deleteTask, updateTask })  {
           </div>
         ) : (
           <div>
-            <h3>{editedTitle}</h3> {/* Muestra el título editado o original */}
-            <p>{editedDescription}</p> {/* Muestra la descripción editada o original */}
+            <h3>{title}</h3> {/* Muestra el título editado o original */}
+            <p>{description}</p> {/* Muestra la descripción editada o original */}
             <p>Estado: {completed ? 'Completada' : 'Pendiente'}</p> {/* Muestra el estado de la tarea */}
           </div>
         )}
