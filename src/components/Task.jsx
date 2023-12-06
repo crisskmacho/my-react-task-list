@@ -1,82 +1,112 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 // Definición del componente de función Task que recibe props específicas
-export default function Task ({task, index, deleteTask, updateTask })  {
-  // Extracción de datos de la tarea y establecimiento de estados para la edición
-  const { title, description, state } = task;
+export default function Task({ task, index, deleteTask, updateTask }) {
+  const { title: originalTitle, description: originalDescription, state: originalState } = task;
   const [editing, setEditing] = useState(false);
-  const [editedTitle, setEditedTitle] = useState(title);
-  const [editedDescription, setEditedDescription] = useState(description);
-  const [completed, setCompleted] = useState(state);
+
+  const [editedTask, setEditedTask] = useState({
+    title: originalTitle,
+    description: originalDescription,
+    state: originalState,
+  });
+
+  useEffect(() => {
+    setEditedTask({
+      title: originalTitle,
+      description: originalDescription,
+      state: originalState,
+    });
+  }, [originalTitle, originalDescription, originalState]);
 
 
-  // Maneja el evento de actualización o edición de la tarea
   const handleUpdateClick = () => {
-    if(editing) {
-      updateTask(index, { title: editedTitle, description: editedDescription, state: completed });
-      setEditing(false); // Finaliza el modo de edición
+    if (editing) {
+      if (editedTask.title.trim() === '' || editedTask.description.trim() === '') {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+      updateTask(index, editedTask);
+      setEditing(false);
     } else {
-      setEditedTitle(title); // Establece el título de la tarea en los estados de edición
-      setEditedDescription(description); // Establece la descripción de la tarea en los estados de edición
-      setCompleted(state); // Establece el estado completado de la tarea en el estado de edición
-      setEditing(true); // Activa el modo de edición
+      setEditing(true);
     }
   };
 
-  // Maneja el evento de cancelar la edición y restaurar los valores originales
   const handleCancelClick = () => {
-    setEditedTitle(title); // Restaura el título original
-    setEditedDescription(description); // Restaura la descripción original
-    setEditing(false); // Finaliza el modo de edición
-  }
-
-  //Maneja el cambio en el checkbox de completado
-  const handleCheckboxChange = () => {
-    setCompleted(!completed); // Cambia el estado completado
-    updateTask(index, { title: editedTitle, description: editedDescription, state: !completed });
-    // Actualiza la tarea con el estado opuesto del completado al índice dado
+    setEditedTask({
+      title: originalTitle,
+      description: originalDescription,
+      state: originalState,
+    });
+    setEditing(false);
   };
 
+  const handleCheckboxChange = () => {
+    const updatedState = !editedTask.state;
+    setEditedTask({ ...editedTask, state: updatedState });
+    updateTask(index, { ...editedTask, state: updatedState });
+  };
+
+  const handleInputChange = (e, field) => {
+    setEditedTask({ ...editedTask, [field]: e.target.value });
+  };
 
   return (
-    
-      <div style={{ textDecoration: completed ? 'line-through' : 'none' }}>
-        {/* Checkbox para marcar/desmarcar la tarea como completada */}
-        <input
-          type="checkbox"
-          checked={completed}
-          onChange={handleCheckboxChange}
-          readOnly // El checkbox es de solo lectura para controlarlo desde el estado
-        />
-        {editing ? (
-          <div>
-            {/* código que maneja la visualización y edición de la tarea */}
-            <input
-              type="text"
-              value={editedTitle}
-              onChange={(e) => setEditedTitle(e.target.value)}
-            />
-            <input
-              type="text"
-              value={editedDescription}
-              onChange={(e) => setEditedDescription(e.target.value)}
-            />
-          </div>
-        ) : (
-          <div>
-            <h3>{title}</h3> {/* Muestra el título editado o original */}
-            <p>{description}</p> {/* Muestra la descripción editada o original */}
-            <p>Estado: {completed ? 'Completada' : 'Pendiente'}</p> {/* Muestra el estado de la tarea */}
-          </div>
-        )}
-        <button onClick={handleUpdateClick}>
-          {editing ? 'Guardar' : 'Actualizar'}   {/* Cambia el texto del botón dependiendo del modo de edición */}
+    <div style={{ textDecoration: editedTask.state ? 'line-through' : 'none' }}>
+      {/* Checkbox para marcar/desmarcar la tarea como completada */}
+      <input
+        className='checkCaja'
+        type="checkbox"
+        checked={editedTask.state}
+        onChange={handleCheckboxChange}
+        readOnly // El checkbox es de solo lectura para controlarlo desde el estado
+      />
+
+      {editing ? (
+        <div className='task-edit-container'>
+          {/* código que maneja la visualización y edición de la tarea */}
+          <input
+            className='editedTitleInput'
+            type="text"
+            value={editedTask.title}
+            onChange={(e) => handleInputChange(e, 'title')}
+          />
+          <input
+            className='editedDescriptionInput'
+            type="text"
+            value={editedTask.description}
+            onChange={(e) => handleInputChange(e, 'description')}
+          />
+        </div>
+      ) : (
+        <div className="task-details">
+          <h3>{editedTask.title}</h3> {/* Muestra el título editado o original */}
+          <p>{editedTask.description}</p> {/* Muestra la descripción editada o original */}
+          <p>Estado: {editedTask.state ? 'Completada' : 'Pendiente'}</p> {/* Muestra el estado de la tarea */}
+        </div>
+      )}
+
+      <div className="update-button-container">
+        <button className={editing ? 'save-button' : 'update-button'} onClick={handleUpdateClick}>
+          {editing ? 'Guardar' : 'Editar'} {/* Cambia el texto del botón dependiendo del modo de edición */}
         </button>
-        <button onClick={() => deleteTask(index)}>Eliminar</button> {/* Elimina la tarea */}
-        {editing && <button onClick={handleCancelClick}>Cancelar</button>} {/* Muestra el botón de cancelar solo en modo de edición */}
       </div>
-    
+
+      <div className="delete-button-container"> {/* Elimina la tarea */}
+        <button className="delete-button" onClick={() => deleteTask(index)}>
+          Eliminar
+        </button>
+      </div>
+
+      <div className="cancel-button-container"> {/* Muestra el botón de cancelar solo en modo de edición */}
+        {editing && (
+          <button className="cancel-button" onClick={handleCancelClick}>
+            Cancelar
+          </button>
+        )}
+      </div>
+    </div>
   );
 }
-

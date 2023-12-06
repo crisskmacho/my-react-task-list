@@ -54,29 +54,37 @@ export default function TaskList ({ }) {
   };
 
   return (
-    <div>
+    <div className='task-manager-container'>
       <div className='TotalTask'>
           Total de tareas: {tasks.length}
       </div>{/* Muestra el número total de tareas */}
 
       {/* Campos de entrada para el título y la descripción de la nueva tarea */}
-      <form onSubmit={handleFormSubmit}>
-        <input
-          className='TituloTarea'
-          type="text"
-          placeholder="Título de la tarea"
-          value={title}
-          onChange={handleTitleChange}
-        />
-        <input
-          className='DescTarea'
-          type="text"
-          placeholder="Descripción de la tarea (opcional)"
-          value={description}
-          onChange={handleDrescriptionChange}
-        />
-        <button className='addtask' type="submit">Agregar Tarea</button>
-      </form>
+      <div className='task-form-container'>
+        <form className='form-container' onSubmit={handleFormSubmit}>
+          <div className='title-input-container'>
+            <input
+              className='TituloTarea'
+              type="text"
+              placeholder="Título de la tarea"
+              value={title}
+              onChange={handleTitleChange}
+            />
+          </div> 
+          <div className='description-input-container'>
+            <input
+              className='DescTarea'
+              type="text"
+              placeholder="Descripción de la tarea (opcional)"
+              value={description}
+              onChange={handleDrescriptionChange}
+            />
+          </div>  
+          <div className='add-task-button-container'>        
+            <button className='addtask' type="submit">Agregar Tarea</button>
+          </div>  
+        </form>
+      </div>
 
       <ul className='mapTask'>
         {tasks.map((task, index) => (
