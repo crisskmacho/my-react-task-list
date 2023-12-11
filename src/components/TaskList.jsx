@@ -75,7 +75,7 @@ export default function TaskList ({ }) {
             <input
               className='DescTarea'
               type="text"
-              placeholder="Descripción de la tarea (opcional)"
+              placeholder="Descripción de la tarea"
               value={description}
               onChange={handleDrescriptionChange}
             />
@@ -86,17 +86,21 @@ export default function TaskList ({ }) {
         </form>
       </div>
 
-      <ul className='mapTask'>
-        {tasks.map((task, index) => (
-          <Task
-            key={index}
-            task={task}
-            index={index}
-            deleteTask={handleDeleteTask}
-            updateTask={handleUpdateTask}
-          />
-        ))}
-      </ul>
+      <div className='card'>
+        <span></span>
+        <div className='mapTask'>
+          {tasks.map((task, index) => (
+            <Task
+              key={index}
+              task={task}
+              index={index}
+              deleteTask={handleDeleteTask}
+              updateTask={handleUpdateTask}
+            />
+          ))}
+        </div>
+      </div>  
+
     </div>
   );
 }

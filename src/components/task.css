@@ -1,0 +1,194 @@
+/* Estilo de la Carta*/
+.task-container {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    
+}
+
+.task-container:hover {
+    transform: translateY(-20px);
+}
+
+.task-container::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, #0307f4, #ff0000);
+    border-radius: 1.2em;
+}
+
+.task-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #0307f4, #ff0000);
+    filter: blur(30px);
+}
+
+.task-container span {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    border-radius: 1em;
+}
+
+.task-container span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* CHECKBOX */
+.checkCaja {
+    position: absolute;
+    top: 20px; /* Ajusta esta propiedad según la posición deseada */
+    left: 10%; /* Ajusta esta propiedad según la posición deseada */
+    transform: translateX(-50%);
+    z-index: 3; /* Asegúrate de que el índice z sea mayor que el de la tarjeta */
+}
+
+
+/* Detalles de la tarea */ 
+.task-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+}
+
+/* Estilo para el título */
+.task-details h3 {
+    margin-top: 5px; /* Elimina el margen superior predeterminado del título */
+    margin-bottom: 5px;
+    z-index: 3;
+    padding: 1rem;
+}
+
+/* Estilo para la descripción */
+.task-details p:nth-child(2) {
+    margin-top: 5px; /* Ajusta el espacio entre el título y la descripción */
+    margin-bottom: 5px;
+    z-index: 3;
+    padding: 1rem;
+}
+
+/* Estilo para el estado */
+.task-details p:nth-child(3) {
+    margin-top: 5px; /* Ajusta el espacio entre la descripción y el estado */
+    margin-bottom: 5px;
+    z-index: 3;
+    padding: 1rem;
+}
+
+
+/* Input editar titulo y descripción */
+/* Estilos para la edición del título */
+.editedTitleInput {
+    position: absolute;
+    width: 50%; /* Ancho del input */
+    padding: 8px; /* Espaciado interno */
+    margin-bottom: 10px; /* Espaciado inferior */
+    margin-top: 15px;
+    margin-left: 50px;
+    border: 1px solid #ccc; /* Borde del input */
+    border-radius: 4px; /* Radio de borde */
+    box-sizing: border-box; /* El tamaño incluye el borde */
+    z-index: 3;
+}
+
+
+  
+  /* Estilos para la edición de la descripción */
+.editedDescriptionInput {
+    position: absolute;
+    width: 70%; /* Ancho del input */
+    padding: 8px; /* Espaciado interno */
+    margin-bottom: 10px; /* Espaciado inferior */
+    margin-top: 70px;
+    margin-left: 30px;
+    border: 1px solid #ccc; /* Borde del input */
+    border-radius: 4px; /* Radio de borde */
+    box-sizing: border-box; /* El tamaño incluye el borde */
+    z-index: 3;
+}
+
+
+/* Botones eliminar y editar */
+.delete-button-container {
+    position: absolute;
+    left: 115px;
+    margin-top: 40px; /* Ajusta el espacio entre el estado y los botones */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 3;
+}
+  
+
+.update-button-container{
+    position: absolute;
+    left: 25px;
+    margin-top: 40px; /* Ajusta el espacio entre el estado y los botones */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 3;
+}
+
+/* Estilo para el contenedor del botón de cancelar */
+.cancel-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px; /* Ajusta el espacio entre los botones y el contenido superior */
+    z-index: 3;
+}
+
+/* Estilo para el botón de cancelar */
+.cancel-button {
+    background-color: #ff0000; /* Color de fondo */
+    color: #ffffff; /* Color del texto */
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    z-index: 3;
+}
+  
+.cancel-button:hover {
+    background-color: #cc0000; /* Cambio de color al pasar el cursor */
+    z-index: 3;
+}
+
+
+/* Estilos para los botones Guardar y Eliminar */
+.save-button,
+.delete-button-edit-mode {
+    margin-top: 110px;
+    padding: 8px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import "./task.css";
 
 // Definición del componente de función Task que recibe props específicas
 export default function Task({ task, index, deleteTask, updateTask }) {
@@ -54,7 +54,8 @@ export default function Task({ task, index, deleteTask, updateTask }) {
   };
 
   return (
-    <div style={{ textDecoration: editedTask.state ? 'line-through' : 'none' }}>
+    <div className='task-container' style={{ textDecoration: editedTask.state ? 'line-through' : 'none' }}>
+      <span></span>
       {/* Checkbox para marcar/desmarcar la tarea como completada */}
       <input
         className='checkCaja'
@@ -95,7 +96,7 @@ export default function Task({ task, index, deleteTask, updateTask }) {
       </div>
 
       <div className="delete-button-container"> {/* Elimina la tarea */}
-        <button className="delete-button" onClick={() => deleteTask(index)}>
+        <button className={editing ? 'delete-button-edit-mode' : 'delete-button'} onClick={() => deleteTask(index)}>
           Eliminar
         </button>
       </div>
