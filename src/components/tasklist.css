@@ -1,32 +1,32 @@
-.TotalTask{
+/* styles.css */
+/* Añade aquí los estilos existentes de styles.css */
+
+/* tasklist.css */
+.TotalTask {
     color: white;
     text-align: center;
-    font-family: Comic Sans MS; 
-    font-weight:bold; 
-    font-size: 30px; 
-    text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68; 
-    
+    font-family: Comic Sans MS;
+    font-weight: bold;
+    font-size: 30px;
+    text-shadow: -1px 0 #414d68, 0 1px #414d68, 1px 0 #414d68, 0 -1px #414d68,
+      -2px 2px 0 #414d68, 2px 2px 0 #414d68, 1px 1px #414d68, 2px 2px #414d68,
+      3px 3px #414d68, 4px 4px #414d68, 5px 5px #414d68;
 }
-
-.whole-container{
+  
+.whole-container {
     display: flex;
     justify-content: center;
 }
-
-
+  
 .task-form-container {
-   /* position: absolute;
-    top: 30%;
-    left: 50%; */
     width: 400px;
     padding: 40px;
-    /*transform: translate(-50%, -50%);*/
     background: rgba(24, 20, 20, 0.987);
     box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
     border-radius: 10px;
 }
-
+  
 .task-form-container input {
     width: 100%;
     padding: 5px 0;
@@ -38,16 +38,16 @@
     outline: none;
     background: transparent;
 }
-
+  
 .task-form-container input::placeholder {
     color: #fff;
 }
-
+  
 .task-form-container .title-input-container,
 .task-form-container .description-input-container {
-  position: relative;
+    position: relative;
 }
-
+  
 .task-form-container input:focus ~ label,
 .task-form-container input:valid ~ label {
     top: -20px;
@@ -55,7 +55,7 @@
     color: #bdb8b8;
     font-size: 12px;
 }
-
+  
 .task-form-container button {
     position: relative;
     display: inline-block;
@@ -65,27 +65,27 @@
     text-decoration: none;
     text-transform: uppercase;
     overflow: hidden;
-    transition: .5s;
+    transition: 0.5s;
     margin-top: 20px;
     border: none;
     cursor: pointer;
     background-color: transparent;
 }
-
+  
 .task-form-container button:hover {
     background: #0307f4;
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 5px #0307f4, 0 0 25px #0307f4, 0 0 50px #0307f4, 0 0 100px #0307f4;
+    box-shadow: 0 0 5px #0307f4, 0 0 25px #0307f4, 0 0 50px #0307f4,
+      0 0 100px #0307f4;
 }
-
+  
 .task-form-container button span {
     position: absolute;
     display: block;
 }
-
-
-.task-form-container button span:nth-child(1){
+  
+.task-form-container button span:nth-child(1) {
     bottom: 2px;
     left: -100%;
     width: 100%;
@@ -93,13 +93,47 @@
     background: linear-gradient(90deg, transparent, #03f40f);
     animation: btn-anim1 2s linear infinite;
 }
-
-
-.mapTask{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 3%;
+  
+/* Carousel styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
 }
-
-
+  
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    padding: 8%;
+    flex-direction: row;
+}
+  
+.card {
+    flex: 0 0 auto;
+    width: 300px; /* Ajusta el ancho de la tarjeta según tu diseño */
+    height: 200px; /* Ajusta la altura de la tarjeta según tu diseño */
+    display: flex;
+    align-items: center;
+}
+  
+.prev-button,
+.next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+  
+.prev-button {
+    left: 0;
+}
+  
+.next-button {
+    right: 0;
+}
+  

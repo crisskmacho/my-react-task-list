@@ -4,6 +4,7 @@ import Task from './Task';
 import "./tasklist.css";
 import { BotonA } from './Buttons';
 import { useTaskManager } from './hooks/useTaskManage';
+import { useCarousel } from './hooks/useCarousel';
 
 // Definición del componente de función TaskList que no recibe props
 export default function TaskList ({ }) {
@@ -13,6 +14,8 @@ export default function TaskList ({ }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
+  const {carouselStyle, handleNextButtonClick, handlePrevButtonClick } = useCarousel(0, 300, tasks.length);
+  
 
   // Maneja el cambio en el input del título de la tarea
   const handleTitleChange = (e) => {
@@ -87,20 +90,28 @@ export default function TaskList ({ }) {
           </form>
         </div>
       </div>
-        <div className='card'>
-          <span></span>
-          <div className='mapTask'>
-            {tasks.map((task, index) => (
+
+      <div className='carousel-container'>
+        <span></span>
+        <div className='carousel' style={carouselStyle}>
+          {tasks.map((task, index) => (
+            <div className='card' key={index}>
               <Task
-                key={index}
                 task={task}
                 index={index}
                 deleteTask={handleDeleteTask}
                 updateTask={handleUpdateTask}
               />
-            ))}
-          </div>
-        </div>  
+            </div>
+          ))}
+        </div>
+        <button className='prev-button' onClick={handlePrevButtonClick}>
+          &#10094;
+        </button>
+        <button className='next-button' onClick={handleNextButtonClick}>
+          &#10095;
+        </button>
+      </div> 
 
     </div>
   );
