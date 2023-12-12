@@ -60,46 +60,47 @@ export default function TaskList ({ }) {
       </div>{/* Muestra el número total de tareas */}
 
       {/* Campos de entrada para el título y la descripción de la nueva tarea */}
-      <div className='task-form-container'>
-        <form className='form-container' onSubmit={handleFormSubmit}>
-          <div className='title-input-container'>
-            <input
-              className='TituloTarea'
-              type="text"
-              placeholder="Título de la tarea"
-              value={title}
-              onChange={handleTitleChange}
-            />
-          </div> 
-          <div className='description-input-container'>
-            <input
-              className='DescTarea'
-              type="text"
-              placeholder="Descripción de la tarea"
-              value={description}
-              onChange={handleDrescriptionChange}
-            />
-          </div>  
-          <div className='add-task-button-container'>        
-            <button className='addtask' type="submit">Agregar Tarea</button>
-          </div>  
-        </form>
-      </div>
-
-      <div className='card'>
-        <span></span>
-        <div className='mapTask'>
-          {tasks.map((task, index) => (
-            <Task
-              key={index}
-              task={task}
-              index={index}
-              deleteTask={handleDeleteTask}
-              updateTask={handleUpdateTask}
-            />
-          ))}
+      <div className="whole-container"> 
+        <div className='task-form-container'>
+          <form className='form-container' onSubmit={handleFormSubmit}>
+            <div className='title-input-container'>
+              <input
+                className='TituloTarea'
+                type="text"
+                placeholder="Título de la tarea"
+                value={title}
+                onChange={handleTitleChange}
+              />
+            </div> 
+            <div className='description-input-container'>
+              <input
+                className='DescTarea'
+                type="text"
+                placeholder="Descripción de la tarea"
+                value={description}
+                onChange={handleDrescriptionChange}
+              />
+            </div>  
+            <div className='add-task-button-container'>        
+              <button className='addtask' type="submit">Agregar Tarea</button>
+            </div>  
+          </form>
         </div>
-      </div>  
+      </div>
+        <div className='card'>
+          <span></span>
+          <div className='mapTask'>
+            {tasks.map((task, index) => (
+              <Task
+                key={index}
+                task={task}
+                index={index}
+                deleteTask={handleDeleteTask}
+                updateTask={handleUpdateTask}
+              />
+            ))}
+          </div>
+        </div>  
 
     </div>
   );

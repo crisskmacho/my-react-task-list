@@ -8,14 +8,19 @@
     
 }
 
+.whole-container{
+    display: flex;
+    justify-content: center;
+}
+
 
 .task-form-container {
-    position: absolute;
+   /* position: absolute;
     top: 30%;
-    left: 50%;
+    left: 50%; */
     width: 400px;
     padding: 40px;
-    transform: translate(-50%, -50%);
+    /*transform: translate(-50%, -50%);*/
     background: rgba(24, 20, 20, 0.987);
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
@@ -90,6 +95,11 @@
 }
 
 
-
+.mapTask{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 3%;
+}
 
 
