@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Task from './Task';
 
 import "./tasklist.css";
-import { BotonA } from './Buttons';
+import { BotonA } from './buttons/Buttons';
 import { useTaskManager } from './hooks/useTaskManage';
 import { useCarousel } from './hooks/useCarousel';
 
