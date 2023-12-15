@@ -1,9 +1,10 @@
 .title {
-    text-align: center;
     color: white;
-    background-color: #000000;
-    font-family: monospace;
-    width: 20%; /* Puedes ajustar este valor según lo angosto que desees el div */
-    margin: 0 auto; /* Esto centra el div horizontalmente en la página */
-    border-radius: 0%;
+    text-align: center;
+    font-family: Comic Sans MS;
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: -1px 0 #414d68, 0 1px #414d68, 1px 0 #414d68, 0 -1px #414d68,
+      -2px 2px 0 #414d68, 2px 2px 0 #414d68, 1px 1px #414d68, 2px 2px #414d68,
+      3px 3px #414d68, 4px 4px #414d68, 5px 5px #414d68;
 }

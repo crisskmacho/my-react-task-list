@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Task from './Task';
 
 import "./tasklist.css";
-import { BotonA } from './buttons/Buttons';
-import { useTaskManager } from './hooks/useTaskManage';
-import { useCarousel } from './hooks/useCarousel';
+import { BotonA } from '../buttons/Buttons';
+import { useTaskManager } from '../hooks/useTaskManage';
+import { useCarousel } from '../hooks/useCarousel';
 
 // Definición del componente de función TaskList que no recibe props
 export default function TaskList ({ }) {
@@ -15,6 +15,7 @@ export default function TaskList ({ }) {
   const [description, setDescription] = useState('');
 
   const {carouselStyle, handleNextButtonClick, handlePrevButtonClick } = useCarousel(0, 300, tasks.length);
+  
   
 
   // Maneja el cambio en el input del título de la tarea

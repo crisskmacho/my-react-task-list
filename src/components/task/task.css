@@ -157,6 +157,8 @@
     z-index: 3;
 }
 
+
+
 /* Estilo para el contenedor del botón de cancelar */
 .cancel-button-container {
     display: flex;

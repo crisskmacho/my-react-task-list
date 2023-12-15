@@ -1,0 +1,76 @@
+.welcome-section{
+    color: white;
+    text-align: center;
+    padding: 10%;
+}
+
+.welcome-section h1{
+    font-size: 15vmin;
+    position: absolute;
+}
+
+.border {
+    color: rgb(255, 255, 255);  
+    text-shadow:
+      -1px -1px 0 rgb(0, 0, 0), 
+      1px -1px 0 rgb(0, 0, 0),
+      -1px 1px 0 rgb(0, 0, 0),
+      1px 1px 0 rgb(0, 0, 0);  
+}
+
+.wave {
+    color: #09f;
+    animation: wave 3s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% {
+      clip-path: polygon(
+        0% 80%,
+        50% 58%,
+        83% 84%,
+        84% 80%,
+        50% 81%,
+        84% 89%,
+        100% 82%,
+        100% 100%,
+        0% 100%
+      );
+    }
+  
+    50% {
+      clip-path: polygon(
+      0% 60%,
+      10% 10%,
+      34% 6%,
+      81% 82%,
+      80% 90%,
+      4% 5%,
+      100% 6%,
+      100% 100%,
+      0% 100%
+      );
+    }
+
+
+
+}
+
+
+
+
+.app-description {
+  color: white;
+  padding: 5% 15%; /* Modifica el padding para ajustar el espacio en la parte superior */
+  margin-top: -70px; /* Utiliza margin-top para desplazar el contenido hacia arriba */
+  font-size: larger;
+}
+
+.app-description h1{
+  text-align: center;
+}
+
+
+
+
+

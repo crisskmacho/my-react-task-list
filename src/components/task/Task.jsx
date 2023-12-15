@@ -101,7 +101,7 @@ export default function Task({ task, index, deleteTask, updateTask }) {
         </button>
       </div>
 
-      <div className="cancel-button-container"> {/* Muestra el botón de cancelar solo en modo de edición */}
+      <div className="cancel-button-container">
         {editing && (
           <button className="cancel-button" onClick={handleCancelClick}>
             Cancelar
