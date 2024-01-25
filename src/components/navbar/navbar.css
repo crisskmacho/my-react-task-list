@@ -1,26 +1,26 @@
 .prueba{
-    background: rgb(255, 255, 255);
-    padding: 2px;
+  background: rgb(255, 255, 255);
+  padding: 2px;
 }
 
 .list{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
 }
 
 
 .custom-link {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-weight: 700;
-    margin: 5px; /* Agregar margen */
-    border: 1px solid rgb(255, 255, 255); /* Agregar borde */
-    padding: 8px 12px; /* Agregar relleno */
-  }
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  margin: 5px; /* Agregar margen */
+  border: 1px solid rgb(255, 255, 255); /* Agregar borde */
+  padding: 8px 12px; /* Agregar relleno */
+}
 
-  .custom-link:hover {
-    background-color: rgb(96, 173, 245);
-    color: white;
-  }
+.custom-link:hover {
+  background-color: rgb(96, 173, 245);
+  color: white;
+}

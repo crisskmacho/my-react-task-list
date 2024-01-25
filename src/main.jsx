@@ -1,15 +1,23 @@
-import React, { Suspense } from 'react'
-import ReactDOM from 'react-dom/client'
-import Header from './components/header/Header'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { NavBar } from './components/navbar/NavBar'
-import './main.css'
+import React, { Suspense } from 'react';
+import ReactDOM from 'react-dom/client';
+import { ChakraProvider } from '@chakra-ui/react'; // Importa ChakraProvider
+import Header from './components/header/Header';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { NavBar } from './components/navbar/NavBar';
+import './main.css';
+
+// Importa los componentes específicos de Chakra UI que necesites
+import { extendTheme } from '@chakra-ui/react';
+
+const theme = extendTheme({
+  // Configuración del tema si es necesario
+});
 
 const Home = React.lazy(() => import('./components/pages/Home'));
 const Tareas = React.lazy(() => import('./components/pages/Tareas'));
 const SobreNosotros = React.lazy(() => import('./components/pages/SobreNosotros'));
 
-const Loading = () => 
+const Loading = () => (
   <div className="terminal-loader">
     <div className="terminal-header">
       <div className="terminal-title">Status</div>
@@ -19,22 +27,23 @@ const Loading = () =>
         <div className="control maximize"></div>
       </div>
     </div>
-      <div>Cargando...</div>
+    <div>Cargando...</div>
   </div>
+);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      
-      <NavBar/>
-      <Suspense fallback={<Loading/>}>
-        <Routes>
-          <Route exact path='/' Component={Home}/>
-          <Route path='tareas' Component={Tareas}/>
-          <Route path='/sobre-nosotros' Component={SobreNosotros}/>
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
-
+    <ChakraProvider theme={theme}> 
+      <BrowserRouter>
+        <NavBar />
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route path='tareas' element={<Tareas />} />
+            <Route path='/sobre-nosotros' element={<SobreNosotros />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </ChakraProvider>
   </React.StrictMode>,
-)
+);
