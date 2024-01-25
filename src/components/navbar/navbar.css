@@ -3,14 +3,6 @@
   padding: 2px;
 }
 
-.list{
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-}
-
-
 .custom-link {
   text-decoration: none;
   color: rgb(0, 0, 0);

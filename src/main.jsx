@@ -6,11 +6,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { NavBar } from './components/navbar/NavBar';
 import './main.css';
 
-// Importa los componentes específicos de Chakra UI que necesites
+// Importa los componentes específicos de Chakra UI
 import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
-  // Configuración del tema si es necesario
 });
 
 const Home = React.lazy(() => import('./components/pages/Home'));
